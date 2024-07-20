@@ -1,4 +1,4 @@
-package com.progamaticsoft.config.aop.logging;
+package com.progamaticsoft.aop.logging;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

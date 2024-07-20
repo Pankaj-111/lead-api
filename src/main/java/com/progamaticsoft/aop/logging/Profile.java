@@ -1,4 +1,4 @@
-package com.progamaticsoft.config.aop.logging;
+package com.progamaticsoft.aop.logging;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
