@@ -14,8 +14,9 @@ public class TestController {
 
 	@Profile
 	@GetMapping("/test")
-	public void test() {
+	public String test() {
 		System.out.println("JJJJJJJJJJJJJJJJJJJJJJJJJ");
 		System.out.println("GGGGGGGGGGGGGGGGGg" + encryptionUtil.encrypt("Pankaj"));
+		return Thread.currentThread().toString();
 	}
 }
