@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.progamaticsoft.aop.logging.Profile;
 import com.progamaticsoft.utils.EncryptionUtil;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 public class TestController {
 	@Autowired
@@ -14,7 +16,7 @@ public class TestController {
 
 	@Profile
 	@GetMapping("/test")
-	public String test() {
+	public String test(final HttpServletRequest request) {
 		System.out.println("JJJJJJJJJJJJJJJJJJJJJJJJJ");
 		System.out.println("GGGGGGGGGGGGGGGGGg" + encryptionUtil.encrypt("Pankaj"));
 		return Thread.currentThread().toString();
