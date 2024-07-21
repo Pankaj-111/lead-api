@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.progamaticsoft.aop.logging.Profile;
-import com.progamaticsoft.config.controlleradvice.ResourceNotFoundException;
+import com.progamaticsoft.config.controlleradvice.exceptions.InvalidValueException;
+import com.progamaticsoft.config.controlleradvice.exceptions.ResourceNotFoundException;
 import com.progamaticsoft.utils.EncryptionUtil;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,7 +34,7 @@ public class TestController {
 	public String test(final HttpServletRequest request) {
 		log.info("Encrypted value of {} : {}", "Pankaj", encryptionUtil.encrypt("Pankaj"));
 		if (true) {
-			throw new ResourceNotFoundException("ID  not found");
+			throw new InvalidValueException("Invalid  not found");
 		}
 		return Thread.currentThread().toString();
 	}

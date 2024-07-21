@@ -1,4 +1,4 @@
-package com.progamaticsoft.config.controlleradvice;
+package com.progamaticsoft.config.controlleradvice.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
 
