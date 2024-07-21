@@ -6,6 +6,8 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.progamaticsoft.config.controlleradvice.exceptions.EncryptionException;
+
 public class EncryptionUtil {
 	private static final String UTF_8 = "UTF-8";
 	private static final String AES = "AES";
@@ -29,7 +31,7 @@ public class EncryptionUtil {
 			byte[] encrypted = cipher.doFinal(value.getBytes());
 			return Base64.getEncoder().encodeToString(encrypted);
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new EncryptionException(e);
 		}
 	}
 
@@ -44,7 +46,7 @@ public class EncryptionUtil {
 			final byte[] original = cipher.doFinal(Base64.getDecoder().decode(encrypted));
 			return new String(original);
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new EncryptionException(e);
 		}
 	}
 }
