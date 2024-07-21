@@ -15,12 +15,13 @@ public class Profiler {
 	
 	@Around("@annotation(Profile)")
 	public Object logExecutionTime(final ProceedingJoinPoint joinPoint) throws Throwable {
-		log.info("EXecuting {}", joinPoint.getSignature());
+		log.info("[*** EXECUTING {} ]", joinPoint.getSignature());
+		//final Object[] args = joinPoint.getArgs();
 		final StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		final Object proceed = joinPoint.proceed();
 		stopWatch.stop();
-		log.info("{} has taken {} ms", joinPoint.getSignature(), stopWatch.getTotalTimeMillis());
+		log.info("[*** {} HAS TAKEN {} MS ]", joinPoint.getSignature(), stopWatch.getTotalTimeMillis());
 		return proceed;
 	}
 }
