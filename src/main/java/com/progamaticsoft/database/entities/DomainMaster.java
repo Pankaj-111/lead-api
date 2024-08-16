@@ -13,28 +13,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "master_data")
-public class MasterData implements Serializable {
-
+@Table(name="domain_master")
+public class DomainMaster implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String active;
-
-	private String name;
-
-	private Integer parent;
-
-	private Double sequence;
-
-	private String type;
 
 	private Date createdate;
 
@@ -43,5 +36,11 @@ public class MasterData implements Serializable {
 	private String description;
 
 	private Date modidate;
+
+	private String name;
+
+	private Integer parent;
+
+	
 
 }
