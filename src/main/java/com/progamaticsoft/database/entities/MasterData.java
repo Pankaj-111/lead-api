@@ -44,4 +44,6 @@ public class MasterData implements Serializable {
 
 	private Date modidate;
 
+	private Long createdBy;
+
 }
