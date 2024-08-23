@@ -1,5 +1,7 @@
 package com.progamaticsoft.dtos.response.domain;
 
+import java.util.List;
+
 import com.progamaticsoft.dtos.request.domain.DomainRequest;
 
 import lombok.Data;
@@ -8,5 +10,5 @@ import lombok.Data;
 public class DomainResponse {
 	private boolean error = false;
 	private String message;
-	private DomainRequest domain;
+	private List<DomainRequest> domains;
 }

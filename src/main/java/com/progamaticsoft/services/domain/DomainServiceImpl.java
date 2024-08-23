@@ -14,4 +14,8 @@ public class DomainServiceImpl implements DomainService {
 		return null;
 	}
 
+	@Override
+	public DomainResponse getDomains() {
+		return null;
+	}
 }

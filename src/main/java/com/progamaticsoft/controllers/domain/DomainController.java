@@ -1,6 +1,7 @@
 package com.progamaticsoft.controllers.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,17 @@ public class DomainController {
 	@PostMapping
 	public DomainResponse crateDomain(@RequestBody @Valid final DomainRequest request) {
 		return domainService.createDomain(request);
+	}
+
+	@Operation(summary = "This API will return all domains created by a user")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Successful operation", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = DomainResponse.class)) }),
+			@ApiResponse(responseCode = "404", description = "Resource not found", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }),
+			@ApiResponse(responseCode = "401", description = "Unauthorized access exception", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
+	@GetMapping
+	public DomainResponse getDomains() {
+		return domainService.getDomains();
 	}
 }
