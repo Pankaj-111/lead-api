@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/domain")
+@RequestMapping("/api/domains")
 public class DomainController {
 
 	@Autowired
@@ -30,10 +30,9 @@ public class DomainController {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = DomainResponse.class)) }),
 			@ApiResponse(responseCode = "404", description = "Resource not found", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }),
-	@ApiResponse(responseCode = "401", description = "Unauthorized access exception", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) })
-	})
-	@PostMapping("/create")
+			@ApiResponse(responseCode = "401", description = "Unauthorized access exception", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
+	@PostMapping
 	public DomainResponse crateDomain(@RequestBody @Valid final DomainRequest request) {
 		return domainService.createDomain(request);
 	}
