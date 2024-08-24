@@ -23,8 +23,6 @@ public class ProjectSecurityConfig {
 		http.csrf(AbstractHttpConfigurer::disable);
 //        http.addFilterBefore(new CustomLoggingFilter(),
 //                UsernamePasswordAuthenticationFilter.class);
-		// http.formLogin(withDefaults());
-//        http.httpBasic(withDefaults())
 		http.httpBasic(Customizer.withDefaults());
 		return http.build();
 	}
