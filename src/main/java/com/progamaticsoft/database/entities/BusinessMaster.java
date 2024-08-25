@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,26 +24,26 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "master_data", indexes = { @Index(columnList = "name,active,deleted"),
-		@Index(columnList = "createdate,modidate") })
-public class MasterData implements Serializable {
-
+@Table(name = "business_master", indexes = { @Index(columnList = "active,deleted"),
+		@Index(columnList = "createdate,modidate") }, uniqueConstraints = {
+				@UniqueConstraint(name = "BUSINESS_NAME_ACTIVE", columnNames = { "name", "active", "deleted" }) })
+public class BusinessMaster implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(length = 64, name = "NAME", nullable = false)
+	@Column(length = 64, name = "BNAME", nullable = false)
 	private String name;
-
-	private Integer parent;
-
-	private Double sequence;
-
-	private String type;
-
 	@Column(length = 256, name = "DESCRIPTION")
 	private String description;
+
+	@Column(name = "TYPE_MATSER_ID", nullable = false)
+	private Integer typeMasterId;
+
+	@Column(name = "PARENT_ID")
+	private Integer parentId;
 
 	@Column(name = "CREATED_BY", nullable = false)
 	private Long createdBy;

@@ -1,6 +1,5 @@
 package com.progamaticsoft.database.entities;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,48 +13,47 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
-@Getter
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "domain_master", indexes = { @Index(columnList = "active,deleted"),
-		@Index(columnList = "createdate,modidate") },
-uniqueConstraints = {
-				@UniqueConstraint(name = "DOMAIN_NAME_ACTIVE", columnNames = { "name", "active", "deleted" }) })
-
-public class DomainMaster implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+@Data
+@Table(name = "mobile_master", indexes = { @Index(columnList = "active,deleted"),
+		@Index(columnList = "createdate,modidate") }, uniqueConstraints = {
+				@UniqueConstraint(name = "MOBILE_UUID", columnNames = { "mobileUUID", "active", "deleted" }),
+				@UniqueConstraint(name = "MOBILE_ACTIVE", columnNames = { "mobile", "active", "deleted" }) })
+public class MobileMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name = "ID")
+	private Long id;
 
-	@Column(length = 64, name = "NAME", nullable = false)
-	private String name;
-	@Column(length = 256, name = "DESCRIPTION")
-	private String description;
+	@Email
+	@Column(length = 10, name = "MOBILE", nullable = false)
+	private Long mobile;
 
-	@Column(name = "CREATED_BY", nullable = false)
-	private Long createdBy;
+	@Column(name = "MOBILE_ISD", nullable = false)
+	private Integer isd;
 
-	private Integer parent;
+	@Column(length = 512, name = "EMAIL_UUID")
+	private String mobileUUID;
 
 	@CreationTimestamp
 	private Date createdate;
 
 	@Column(length = 1, name = "ACTIVE", nullable = false)
-	private String active;
+	private String active = "Y";
 
 	@Column(length = 1, name = "DELETED", nullable = false)
-	private String deleted;
+	private String deleted = "N";
 
 	@UpdateTimestamp
 	private Date modidate;
 
+	@Column(name = "CREATED_BY", nullable = false)
+	private Long createdBy;
 }
