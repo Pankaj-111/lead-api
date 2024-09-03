@@ -22,14 +22,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "email_master",
-indexes = {
-		@Index(columnList = "active,deleted"),
-		@Index(columnList = "createdate,modidate")
-},
-uniqueConstraints = {
-		@UniqueConstraint(name = "EMAIL_EMAIL", columnNames = { "email", "active", "deleted" }),
-		@UniqueConstraint(name = "EMAIL_EMAILUUID", columnNames = { "emailUUID", "active", "deleted" })})
+@Table(name = "email_master", indexes = { @Index(columnList = "active,deleted"),
+		@Index(columnList = "createdate,modidate") }, uniqueConstraints = {
+				@UniqueConstraint(name = "EMAIL_EMAIL", columnNames = { "email", "active", "deleted" }) })
 public class EmailMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,9 +34,6 @@ public class EmailMaster {
 	@Email
 	@Column(length = 128, name = "EMAIL", nullable = false)
 	private String email;
-
-	@Column(length = 512, name = "EMAIL_UUID")
-	private String emailUUID;
 
 	@CreationTimestamp
 	private Date createdate;

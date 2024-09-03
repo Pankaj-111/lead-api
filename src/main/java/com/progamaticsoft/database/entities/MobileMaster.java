@@ -24,7 +24,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "mobile_master", indexes = { @Index(columnList = "active,deleted"),
 		@Index(columnList = "createdate,modidate") }, uniqueConstraints = {
-				@UniqueConstraint(name = "MOBILE_UUID", columnNames = { "mobileUUID", "active", "deleted" }),
 				@UniqueConstraint(name = "MOBILE_ACTIVE", columnNames = { "mobile", "active", "deleted" }) })
 public class MobileMaster {
 	@Id
@@ -38,9 +37,6 @@ public class MobileMaster {
 
 	@Column(name = "MOBILE_ISD", nullable = false)
 	private Integer isd;
-
-	@Column(length = 512, name = "EMAIL_UUID")
-	private String mobileUUID;
 
 	@CreationTimestamp
 	private Date createdate;
