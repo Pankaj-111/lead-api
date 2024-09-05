@@ -47,7 +47,7 @@ public class User {
 	@NotBlank
 	@Size(max = 128)
 	@Column(name = "FNAME")
-	private String FNAME;
+	private String fname;
 
 	@Column(name = "BUSINESS_ID")
 	private Integer businessId;

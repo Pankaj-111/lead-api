@@ -39,11 +39,11 @@ public class BusinessMaster implements Serializable {
 	@Column(length = 256, name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "TYPE_MATSER_ID", nullable = false)
-	private Integer typeMasterId;
-
 	@Column(name = "PARENT_ID")
 	private Integer parentId;
+
+	@Column(name = "DOMAIN_ID", nullable = false)
+	private Integer domainId;
 
 	@Column(name = "CREATED_BY", nullable = false)
 	private Long createdBy;
