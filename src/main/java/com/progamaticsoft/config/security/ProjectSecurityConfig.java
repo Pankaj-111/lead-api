@@ -124,7 +124,7 @@ public class ProjectSecurityConfig {
 				admin.setAccountExpiryDate(LocalDate.now().plusYears(1));
 				admin.setTwoFactorEnabled(false);
 				admin.setSignUpMethod("email");
-				admin.setRole(userRole);
+				admin.setRole(adminRole);
 				userRepository.save(admin);
 			}
 		};
