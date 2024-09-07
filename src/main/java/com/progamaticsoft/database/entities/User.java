@@ -72,6 +72,9 @@ public class User {
 	@Column(name = "CREATED_BY", nullable = false)
 	private Long createdBy;
 
+	@Column(name = "SUPER_USER")
+	private Long superUser;
+	
 	private boolean accountNonLocked = true;
 	private boolean accountNonExpired = true;
 	private boolean credentialsNonExpired = true;

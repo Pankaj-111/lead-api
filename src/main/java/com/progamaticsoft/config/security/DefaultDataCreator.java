@@ -42,7 +42,6 @@ public class DefaultDataCreator {
 			}
 			log.info("****** Default users created in the system......");
 		};
-
 	}
 
 	private User getUser(PasswordEncoder passwordEncoder, Role userRole) {

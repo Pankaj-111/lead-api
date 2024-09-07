@@ -36,7 +36,10 @@ public class ProjectSecurityConfig {
 		http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 				.ignoringRequestMatchers("/api/auth/public/**"));
 		// http.csrf(AbstractHttpConfigurer::disable);
-		http.authorizeHttpRequests((requests) -> requests.requestMatchers("/test").permitAll()
+		http.authorizeHttpRequests(
+				(requests) -> 
+				requests
+//				.requestMatchers("/test").permitAll()
 				.requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
 				.requestMatchers("/api/admin/**").hasRole("ADMIN").requestMatchers("/api/csrf-token").permitAll()
 				.requestMatchers("/api/auth/public/**").permitAll().anyRequest().authenticated());
