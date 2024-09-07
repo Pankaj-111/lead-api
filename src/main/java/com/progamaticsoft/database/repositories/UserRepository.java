@@ -11,5 +11,5 @@ import com.progamaticsoft.database.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByUserId(String userId);
 
-	Boolean existsByUserId(String userId);
+	Boolean existsByUserIdAndActiveAndDeleted(String userId, String active, String deleted);
 }
