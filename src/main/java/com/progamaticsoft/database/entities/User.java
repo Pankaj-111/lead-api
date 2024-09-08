@@ -41,19 +41,28 @@ public class User {
 
 	@NotBlank
 	@Size(max = 128)
-	@Column(name = "USERID")
+	@Column(name = "USERID", nullable = false)
 	private String userId;
+
+	@Column(name = "EMAIL_ID", nullable = false)
+	private Long emailId;
+
+	@Column(name = "MOBILE_ID", nullable = false)
+	private Long mobileId;
+
+	@Column(name = "ISD", nullable = false)
+	private Integer isd;
 
 	@NotBlank
 	@Size(max = 128)
-	@Column(name = "FNAME")
+	@Column(name = "FNAME", nullable = false)
 	private String fname;
 
-	@Column(name = "BUSINESS_ID")
+	@Column(name = "BUSINESS_ID", nullable = false)
 	private Integer businessId;
 
 	@Size(max = 256)
-	@Column(name = "password")
+	@Column(name = "password", nullable = false)
 	@JsonIgnore
 	private String password;
 
@@ -74,7 +83,7 @@ public class User {
 
 	@Column(name = "SUPER_USER")
 	private Long superUser;
-	
+
 	private boolean accountNonLocked = true;
 	private boolean accountNonExpired = true;
 	private boolean credentialsNonExpired = true;

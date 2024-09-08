@@ -14,6 +14,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,6 +40,20 @@ public class BusinessMaster implements Serializable {
 	private String name;
 	@Column(length = 256, name = "DESCRIPTION")
 	private String description;
+
+	@Column(name = "EMAIL_ID", nullable = false)
+	private Long emailId;
+
+	@Column(name = "MOBILE_ID", nullable = false)
+	private Long mobileId;
+
+	@Column(name = "ISD", nullable = false)
+	private Integer isd;
+
+	@NotBlank
+	@Size(max = 128)
+	@Column(name = "CONTACT_PERSON", nullable = false)
+	private String contactPerson;
 
 	@Column(name = "PARENT_ID")
 	private Integer parentId;

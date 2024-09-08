@@ -34,6 +34,9 @@ public class MasterData implements Serializable {
 
 	@Column(length = 64, name = "NAME", nullable = false)
 	private String name;
+	
+	@Column(length = 16, name = "CODE", nullable = false)
+	private String code;
 
 	private Integer parent;
 

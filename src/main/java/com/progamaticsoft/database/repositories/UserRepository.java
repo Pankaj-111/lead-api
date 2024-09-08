@@ -9,7 +9,7 @@ import com.progamaticsoft.database.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	Optional<User> findByUserId(String userId);
+	Optional<User> findByUserIdAndActiveAndDeleted(String userId, String active, String deleted);
 
 	Boolean existsByUserIdAndActiveAndDeleted(String userId, String active, String deleted);
 }
