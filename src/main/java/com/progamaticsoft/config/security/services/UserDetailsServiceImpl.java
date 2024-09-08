@@ -41,7 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 				.orElseThrow(() -> new UsernameNotFoundException("Invalid user mobile not configured"));
 
 		final MasterData mobileIsd = masterDataRepository
-				.findByIdAndActiveAndDeleted(user.getIsd(), Constants.YES, Constants.NO)
+				.findByIdAndActiveAndDeleted(mobile.getIsd(), Constants.YES, Constants.NO)
 				.orElseThrow(() -> new UsernameNotFoundException("Invalid user mobile ISD not configured"));
 
 		return UserDetailsImpl.build(user, email.getEmail(), mobile.getMobile(), mobileIsd.getCode());

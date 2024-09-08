@@ -47,9 +47,6 @@ public class BusinessMaster implements Serializable {
 	@Column(name = "MOBILE_ID", nullable = false)
 	private Long mobileId;
 
-	@Column(name = "ISD", nullable = false)
-	private Integer isd;
-
 	@NotBlank
 	@Size(max = 128)
 	@Column(name = "CONTACT_PERSON", nullable = false)

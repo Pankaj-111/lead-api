@@ -23,7 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "master_data", indexes = { @Index(columnList = "name,active,deleted"),
+@Table(name = "master_data", indexes = { @Index(columnList = "type,active,deleted"),
 		@Index(columnList = "createdate,modidate") })
 public class MasterData implements Serializable {
 
@@ -32,9 +32,6 @@ public class MasterData implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(length = 64, name = "NAME", nullable = false)
-	private String name;
-	
 	@Column(length = 16, name = "CODE", nullable = false)
 	private String code;
 
@@ -42,6 +39,7 @@ public class MasterData implements Serializable {
 
 	private Double sequence;
 
+	@Column(length = 64, name = "TYPE", nullable = false)
 	private String type;
 
 	@Column(length = 256, name = "DESCRIPTION")

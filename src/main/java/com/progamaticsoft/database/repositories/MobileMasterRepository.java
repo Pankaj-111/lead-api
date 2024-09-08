@@ -9,4 +9,7 @@ import com.progamaticsoft.database.entities.MobileMaster;
 
 public interface MobileMasterRepository extends CrudRepository<MobileMaster, Long> {
 	Optional<MobileMaster> findByIdAndActiveAndDeleted(Long id, String active, String deleted);
+
+	Optional<MobileMaster> findByMobileAndIsdAndActiveAndDeleted(Long mobile, Integer isd, String active,
+			String deleted);
 }
